@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="utf-8">
+    <title>{{ page_title }}</title>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='maxcdn_bootstrap.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/maxcdn_bootstrap.js') }}" defer></script>
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% include 'registration.html' %}
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
