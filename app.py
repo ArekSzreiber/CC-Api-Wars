@@ -26,6 +26,7 @@ def route_logout():
     session.pop('username', None)
     return redirect(url_for('route_index'))
 
+
 @app.route('/registration', methods=['POST'])
 def route_registration():
     username = request.form['username']
