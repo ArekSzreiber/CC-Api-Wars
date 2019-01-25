@@ -1,5 +1,5 @@
 {% block head %}
---><script type="text/javascript" src="{{ url_for('static', filename='js/logging.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/logging.js') }}" defer></script>
 {% endblock %}
 
 
@@ -13,7 +13,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Logging</h4>
             </div>
-        <form id="loggingForm" class="modal-body" method="POST" action="{{ url_for('route_logging') }}">
+        <form id="loggingForm" class="modal-body" method="POST" action="{{ url_for('route_login') }}">
             Login: <input type="text" name="username" minlength="3" maxlength="20" required><br>
             Password: <input type="password" name="password" minlength="6" maxlength="30" required><br>
 
