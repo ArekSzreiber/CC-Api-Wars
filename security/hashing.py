@@ -1,8 +1,11 @@
 import bcrypt
 
+salt_rounds = 10
+
+
 
 def hash_password(plain_text):
-    hashed_bytes = bcrypt.hashpw(plain_text.encode('utf-8'), bcrypt.gensalt())
+    hashed_bytes = bcrypt.hashpw(plain_text.encode('utf-8'), bcrypt.gensalt(salt_rounds))
     return hashed_bytes.decode('utf-8')
 
 
