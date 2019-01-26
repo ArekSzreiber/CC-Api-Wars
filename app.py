@@ -9,16 +9,31 @@ app.secret_key = b'\x12\x06\x97O\x8aaw\xadW\x18\xa7\x08%n\x7f\x1a_\xb6\xe03\xf3\
 
 @app.route('/', methods=['GET'])
 def route_index():
-    username = session.get('username', False)
-    return render_template('index.html', username=escape(username))
+    print(session.get('error_message'))
+    session.pop('error_message', None)
+    username = session.get('username')
+    return render_template('index.html', username=username)
+
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def route_login():
     if request.method == 'POST':
-        session['username'] = request.form.get('username', None)
-        return redirect(url_for('route_index'))
-    else:
-        return render_template('login.html', username=escape(session.get('username', False)))
+        # wez z formularza login i haslo
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if not val.is_login_data_valid(username, password):
+            session['error_message'] = "Username or password are not valid"
+        else:
+            if not data.check_user_existence(username):
+                session['error_message'] = "User does not exist"
+                return redirect(url_for('route_index'))
+            hashed_password = data.get_user_password(username)
+            if hashing.verify_password(password, hashed_password):
+                session['username'] = username
+            else:
+                session['error_message'] = "Username and password does not match"
+    return redirect(url_for('route_index'))
 
 
 @app.route('/logout')
