@@ -14,10 +14,10 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                {% if username != "False" %}
-                    <li><a href="#">Signed in as {{ username }}</a></li>
+                {% if username is not none %}
+                <li><a href="#">Signed in as {{ username }}</a></li>
                 {% else %}
-                    <li><a href="#">Not signed in</a></li>
+                <li><a href="#">Not signed in</a></li>
                 {% endif %}
             </ul>
 
