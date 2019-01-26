@@ -32,13 +32,14 @@ def route_registration():
     username = request.form['username']
     plain_text_password = request.form['password']
     if not val.is_login_data_valid(username, plain_text_password):
+        session['error_message'] = "Username or password are not valid"
         return redirect(url_for('route_index'))
     hashed_password = hashing.hash_password(plain_text_password)
     try:
         data.save_new_user(username, hashed_password)
     except Exception as e:
         print(e)
-    # todo modal z info, że udało/nieudało się zarejestrować
+        session['error_message'] = "Creating new user has failed"
     return redirect(url_for('route_index'))
 
 
