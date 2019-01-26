@@ -4,6 +4,6 @@ from data import database_common as dc
 def save_new_user(cursor, username, hashed_password):
     cursor.execute("""
         INSERT INTO public.users (username, password)
-        VALUES (%s, %s)
+        VALUES (%s, %s);
     """, (username, hashed_password)
     )
