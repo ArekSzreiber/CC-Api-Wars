@@ -1,7 +1,29 @@
-<div id="">
+<div id="planetsWrapper">
     <h1>Star Wars universe planets</h1>
 
+    {% if previous_page is none %}
+    <a id="previousPageLink">
+    {% else %}
+    <a id="previousPageLink" href="{{ url_for('route_planets', page=previous_page) }}">
+    {% endif %}
+        <button id="previousPageButton"
+                type="button"
+                class="btn btn-primary"
+                {% if previous_page is none %}disabled{% endif %}
+        >Previous</button>
+    </a>
 
+    {% if next_page is none %}
+    <a id="nextPageLink">
+    {% else %}
+    <a id="nextPageLink" href="{{ url_for('route_planets', page=next_page) }}">
+    {% endif %}
+        <button id="nextPageButton"
+                type="button"
+                class="btn btn-primary"
+                {% if next_page is none %}disabled{% endif %}
+        >Next</button>
+    </a>
 
     <table class="table table-primary table-bordered table-responsive-md">
         <thead>

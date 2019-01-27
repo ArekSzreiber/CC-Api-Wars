@@ -23,3 +23,9 @@ def get_planets(page=1):
         page = "1"
     response = requests.get(url+str(page))
     return response.json()
+
+
+def get_page_nr(page_url):
+    if page_url is not None:
+        return page_url[-1:]
+    return None
