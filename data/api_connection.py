@@ -17,6 +17,9 @@ def get_elements(type="planets", page="1"):
     return response.json()
 
 
-def get_planets(url="https://swapi.co/api/planets/?page=1"):
-    response = requests.get(url)
+def get_planets(page=1):
+    url = "https://swapi.co/api/planets/?page="
+    if page is None:
+        page = "1"
+    response = requests.get(url+str(page))
     return response.json()
