@@ -1,0 +1,40 @@
+<div id="">
+    <h1>Star Wars universe planets</h1>
+
+
+
+    <table class="table table-primary table-bordered table-responsive-md">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        {% set results = planets['results'] %}
+        {% for result in results %}
+        <tr>
+            <td>{{ result.name }}</td>
+            <td>{{ result.diameter }}</td>
+            <td>{{ result.climate }}</td>
+            <td>{{ result.terrain }}</td>
+            <td>{{ result.surface_water }}</td>
+            <td>{{ result.population }}
+                {% if result.population != 'unknown' %}
+                people
+                {% endif %}
+            </td>
+            <td>{% if result.residents|length == 0 %}
+                No known residents
+                {% else %}
+                {{ result.residents|length }} resident(s)
+                {% endif %}
+            </td>
+            <td><button type="button" class="btn btn-outline-light active">Vote</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{{ planets }}

@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, escape, request, url_for, red
 from validation import validator as val
 from security import hashing as hashing
 from data import data_handler as data
+from data import api_connection as api
 
 app = Flask(__name__)
 
@@ -12,10 +13,15 @@ def route_index():
     username = session.get('username')
     error_message = session.get('error_message', None)
     session.pop('error_message', None)
-    
+    planets = api.get_elements()
+    planets_table_header = api.planets_header
+    #previous_page =
+    #next_page =
     return render_template('index.html',
                            username=username,
-                           error_message=error_message)
+                           error_message=error_message,
+                           planets=planets,
+                           headers=planets_table_header)
 
 
 
