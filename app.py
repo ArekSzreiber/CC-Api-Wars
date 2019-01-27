@@ -9,10 +9,10 @@ app.secret_key = b'\x12\x06\x97O\x8aaw\xadW\x18\xa7\x08%n\x7f\x1a_\xb6\xe03\xf3\
 
 @app.route('/', methods=['GET'])
 def route_index():
-    print(session.get('error_message'))
     username = session.get('username')
     error_message = session.get('error_message', None)
     session.pop('error_message', None)
+    
     return render_template('index.html',
                            username=username,
                            error_message=error_message)
