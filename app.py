@@ -13,7 +13,7 @@ def route_index():
     username = session.get('username')
     error_message = session.get('error_message', None)
     session.pop('error_message', None)
-    planets = api.get_elements()
+    planets = api.get_planets()
     planets_table_header = api.planets_header
     #previous_page =
     #next_page =
