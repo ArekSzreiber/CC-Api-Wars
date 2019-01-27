@@ -9,10 +9,3 @@ $(document).ready(function () {
     $("#loggingForm").submit();
   });
 });
-
-
-
-
-//console.log("egistration")
-
-//data-toggle="modal" data-target="#myModal"

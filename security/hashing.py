@@ -3,7 +3,6 @@ import bcrypt
 salt_rounds = 10
 
 
-
 def hash_password(plain_text):
     hashed_bytes = bcrypt.hashpw(plain_text.encode('utf-8'), bcrypt.gensalt(salt_rounds))
     return hashed_bytes.decode('utf-8')
@@ -11,6 +10,7 @@ def hash_password(plain_text):
 
 def verify_password(plain_text, hashed_password):
     return bcrypt.checkpw(plain_text.encode('utf-8'), hashed_password.encode('utf-8'))
+
 
 if __name__ == '__main__':
     # Test the above functions manually

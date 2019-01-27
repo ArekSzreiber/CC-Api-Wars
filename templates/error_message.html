@@ -1,0 +1,24 @@
+{% block head %}
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='js/error_message.js') }}"
+        defer>
+    </script>
+{% endblock %}
+
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalLabel">Error message</h5>
+      </div>
+      <div class="modal-body">
+        {{ error_message }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

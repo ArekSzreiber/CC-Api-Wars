@@ -22,7 +22,9 @@
     {% include 'navbar.html' %}
     {% include 'registration.html' %}
     {% include 'logging.html' %}
-    {% include 'modal_message.html' %}
+    {% if error_message is not none %}
+        {% include 'error_message.html' %}
+    {% endif %}
     <div id="content">
         {% block content %}
         {% endblock %}
