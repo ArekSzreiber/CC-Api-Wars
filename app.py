@@ -8,21 +8,29 @@ app = Flask(__name__)
 
 app.secret_key = b'\x12\x06\x97O\x8aaw\xadW\x18\xa7\x08%n\x7f\x1a_\xb6\xe03\xf3\xe4\x9f'
 
-@app.route('/', methods=['GET'])
-def route_index():
+
+@app.route('/planets/page/<int:page>', methods=['GET'])
+def route_planets(page):
     username = session.get('username')
     error_message = session.get('error_message', None)
     session.pop('error_message', None)
-    planets = api.get_planets()
+    planets = api.get_planets(page)
     planets_table_header = api.planets_header
-    #previous_page =
-    #next_page =
+    next_page = api.get_page_nr(planets.get('next', None))
+    previous_page = api.get_page_nr(planets.get('previous', None))
     return render_template('index.html',
                            username=username,
                            error_message=error_message,
                            planets=planets,
-                           headers=planets_table_header)
+                           headers=planets_table_header,
+                           next_page=next_page,
+                           previous_page=previous_page,
+                           )
 
+
+@app.route('/', methods=['GET'])
+def route_index():
+    return redirect('planets/page/1')
 
 
 @app.route('/login', methods=['GET', 'POST'])
