@@ -1,0 +1,30 @@
+
+[ major ] Resident modal is not opening/working by clicking the residents button.
+[ major ] Page shows a server error, anytime during the review.
+[ major ] After opening a residents modal, by opening another one, the page shows the content of the previous modal.
+[ major ] Can not close the residents modal
+
+
+[ minor ] Residents button is there for planets where there is no known resident.
+[ minor ] By double clicking the navigation buttons on the planet list, the next page's content gets loaded twice.
+[ minor ] Vote button is visible when the user is not logged in (or the login feature is not implemented)
+
+
+[ minor ] The users DB table differ from the plan. (and the 4th exercise was considered implemented)
+[ minor ] The planet-votes DB table differ from the plan. (and the 4th exercise was considered implemented
+
+
+
+
+[ negligible ] 4th exercise is defined "done" but the user does not get a feedback when [s]he votes.
+[ extra ] Planet list is not reloading data which was once already loaded
+[ extra ] Planet list is showing a loading indicator while the content is loading
+[ extra ] Planet list navigation gets disabled while the requested data is loading
+[ extra ] Residents modal is not reloading data which was once already loaded
+[ extra ] Residents modal is not showing the table's header until the content is loaded
+[ extra ] Residents modal is showing a loading indicator while the content is loading
+[ extra ] A nice background image is used, that fits nicely to the site and does not draw your attention out from actual content.
+[ extra ] Bootstrap is used with non-default colors is used (custom build, or a bootswatch theme)
+
+[ extra ] 4th exercise is finished
+[ extra ] 5th exercise is finished
