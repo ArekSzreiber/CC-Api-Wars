@@ -11,7 +11,7 @@ app.secret_key = b'\x12\x06\x97O\x8aaw\xadW\x18\xa7\x08%n\x7f\x1a_\xb6\xe03\xf3\
 
 @app.route('/planets/page/<int:page>', methods=['GET'])
 def route_planets(page):
-    username = session.get('username')
+    username = session.get('username', None)
     error_message = session.get('error_message', None)
     session.pop('error_message', None)
     planets = api.get_planets(page)
