@@ -38,10 +38,19 @@
         {% for result in results %}
         <tr>
             <td>{{ result.name }}</td>
-            <td>{{ result.diameter }}</td>
+            <td>{% if result.diameter != '0' %}
+                {{ result.diameter }} km
+                {% else %}
+                unknown
+                {% endif %}
+            </td>
             <td>{{ result.climate }}</td>
             <td>{{ result.terrain }}</td>
-            <td>{{ result.surface_water }}</td>
+            <td>{{ result.surface_water}}
+                {% if result.surface_water != 'unknown' %}
+                %
+                {% endif %}
+            </td>
             <td>{{ result.population }}
                 {% if result.population != 'unknown' %}
                 people
@@ -53,10 +62,11 @@
                 {{ result.residents|length }} resident(s)
                 {% endif %}
             </td>
-            <td><button type="button" class="btn btn-outline-light active">Vote</button></td>
+            <td>{% if username is not none %}
+                <button type="button" class="btn btn-outline-light active">Vote</button>
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </table>
 </div>
-
-{{ planets }}
