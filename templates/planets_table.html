@@ -59,7 +59,9 @@
             <td>{% if result.residents|length == 0 %}
                 No known residents
                 {% else %}
-                {{ result.residents|length }} resident(s)
+                <button class="btn btn-raised active">
+                    {{ result.residents|length }} resident(s)
+                </button>
                 {% endif %}
             </td>
             <td>{% if username is not none %}
