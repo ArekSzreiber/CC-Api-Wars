@@ -3,6 +3,7 @@ from validation import validator as val
 from security import hashing as hashing
 from data import data_handler as data
 from data import api_connection as api
+from utility import utility as util
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ def route_planets(page):
     error_message = session.get('error_message', None)
     session.pop('error_message', None)
     planets = api.get_planets(page)
+    util.format_big_numbers(planets['results'])
     planets_table_header = api.planets_header
     next_page = api.get_page_nr(planets.get('next', None))
     previous_page = api.get_page_nr(planets.get('previous', None))
