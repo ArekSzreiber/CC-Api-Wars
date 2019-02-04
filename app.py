@@ -36,7 +36,6 @@ def route_index():
 @app.route('/login', methods=['GET', 'POST'])
 def route_login():
     if request.method == 'POST':
-        # wez z formularza login i haslo
         username = request.form.get('username')
         password = request.form.get('password')
         if not val.is_login_data_valid(username, password):
@@ -73,7 +72,6 @@ def route_registration():
         print(e)
         session['error_message'] = "Creating new user has failed"
     return redirect(url_for('route_index'))
-
 
 
 if __name__ == '__main__':
