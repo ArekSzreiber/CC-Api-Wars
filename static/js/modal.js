@@ -1,12 +1,4 @@
-let keys = ['name',
-            'height',
-            'mass',
-            'hair_color',
-            'skin_color',
-            'eye_color',
-            'birth_year',
-            'gender',
-];
+
 
 let headers = [ 'Name',
                 'Height',
@@ -31,16 +23,20 @@ function makeTableHead(headers){
 
 
 function makeTableRow(person){
-    console.log(person);
     let row = document.createElement('tr');
-    for(let key in keys){
-        let cell = document.createElement('td');
-        cell.textContent = person[key];
-        row.appendChild(cell);
-    }
+    row.innerHTML = `
+        <td>${person.name}</td>
+        <td>${person.height}</td>
+        <td>${person.mass}</td>
+        <td>${person.hair_color}</td>
+        <td>${person.skin_color}</td>
+        <td>${person.eye_color}</td>
+        <td>${person.birth_year}</td>
+        <td>${person.gender}</td>
+    `;
     $('#residentsTableBody').append(row);
-
 }
+
 
 function makeTableBody(residentsURLs){
     $('#residentsTableBody').empty();
@@ -54,18 +50,13 @@ function makeTableBody(residentsURLs){
         person.open("GET", residentURL, true);
         person.send();
     }
-
-
 }
 
 
 function makeTable(headers, residents){
-
     makeTableHead(headers);
     makeTableBody(residents);
 }
-
-
 
 
 $('#residentsModal').on('show.bs.modal', function (event) {
@@ -85,7 +76,6 @@ $('#residentsModal').on('show.bs.modal', function (event) {
             $("#residentsTable").innerHTML = planet;
         }
     };
-
     xhr.open("GET", planetUrl, true);
     xhr.send();
 });
