@@ -1,5 +1,4 @@
 
-
 let headers = [ 'Name',
                 'Height',
                 'Mass',
@@ -58,8 +57,8 @@ function makeTable(headers, residents){
     makeTableBody(residents);
 }
 
-
-$('#residentsModal').on('show.bs.modal', function (event) {
+let residentsModal = $('#residentsModal')
+residentsModal.on('show.bs.modal', function (event) {
     let button = $(event.relatedTarget); // Button that triggered the modal
     let planetUrl = button.data('planetUrl'); // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -80,3 +79,6 @@ $('#residentsModal').on('show.bs.modal', function (event) {
     xhr.send();
 });
 
+residentsModal.on('hidden.bs.modal', function(){
+    $("#residentsTable > tbody > tr").remove();
+});
