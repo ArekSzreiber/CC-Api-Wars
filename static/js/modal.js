@@ -1,26 +1,4 @@
 
-let headers = [ 'Name',
-                'Height',
-                'Mass',
-                'Hair color',
-                'Skin color',
-                'Eye color',
-                'Birth year',
-                'Gender',
-    ];
-
-
-function makeTableHead(headers){
-    let tableHeader = $('#residentsTableHeader');
-    tableHeader.empty();
-    for(let header of headers){
-        let cell = document.createElement('th');
-        cell.textContent = header;
-        tableHeader.append(cell);
-    }
-}
-
-
 function makeTableRow(person){
     let row = document.createElement('tr');
     row.innerHTML = `
@@ -52,11 +30,6 @@ function makeTableBody(residentsURLs){
 }
 
 
-function makeTable(headers, residents){
-    makeTableHead(headers);
-    makeTableBody(residents);
-}
-
 let residentsModal = $('#residentsModal')
 residentsModal.on('show.bs.modal', function (event) {
     let button = $(event.relatedTarget); // Button that triggered the modal
@@ -71,7 +44,7 @@ residentsModal.on('show.bs.modal', function (event) {
     xhr.onreadystatechange = function(){
         if(xhr.readyState === 4){
             let planet = JSON.parse(xhr.response);
-            makeTable(headers, planet['residents']);
+            makeTableBody(planet['residents']);
             $("#residentsTable").innerHTML = planet;
         }
     };
