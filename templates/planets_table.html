@@ -59,12 +59,20 @@
             <td>{% if result.residents|length == 0 %}
                 No known residents
                 {% else %}
-                <button class="btn btn-raised active">
+                <button class="btn btn-raised active"
+                        type="button"
+                        data-toggle=""
+                        data-target=""
+                        data-planet-name="">
                     {{ result.residents|length }} resident(s)
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+                <button type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        data-whatever="@getbootstrap">
+                    Open modal for @getbootstrap
+                </button>
                 {% endif %}
             </td>
             <td>{% if username is not none %}
