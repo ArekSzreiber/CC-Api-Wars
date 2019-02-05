@@ -61,17 +61,10 @@
                 {% else %}
                 <button class="btn btn-raised active"
                         type="button"
-                        data-toggle=""
-                        data-target=""
-                        data-planet-name="">
-                    {{ result.residents|length }} resident(s)
-                </button>
-                <button type="button"
-                        class="btn btn-primary"
                         data-toggle="modal"
-                        data-target="#exampleModal"
-                        data-whatever="@getbootstrap">
-                    Open modal for @getbootstrap
+                        data-target="#residentsModal"
+                        data-planet-name="{{ result.name }}">
+                    {{ result.residents|length }} resident(s)
                 </button>
                 {% endif %}
             </td>
