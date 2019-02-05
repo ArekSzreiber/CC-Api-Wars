@@ -1,0 +1,26 @@
+<table class="table table-primary table-bordered table-responsive-lg">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Mass</th>
+            <th>Hair color</th>
+            <th>Skin color</th>
+            <th>Eye color</th>
+            <th>Birth year</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    {% for row in rows %}
+    <tr>
+        <td>{{ row.name }}</td>
+        <td>{{ row.height }}</td>
+        <td>{{ row.mass }}</td>
+        <td>{{ row.hair_color }}</td>
+        <td>{{ row.skin_color }}</td>
+        <td>{{ row.eye_color }}</td>
+        <td>{{ row.birth_year }}</td>
+        <td>{{ row.gender }}</td>
+    </tr>
+    {% endfor %}
+</table>
