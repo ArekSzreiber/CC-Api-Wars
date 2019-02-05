@@ -3,7 +3,7 @@ function makeTableRow(person){
     let row = document.createElement('tr');
     row.innerHTML = `
         <td>${person.name}</td>
-        <td>${person.height}</td>
+        <td>${person.height/100}</td>
         <td>${person.mass}</td>
         <td>${person.hair_color}</td>
         <td>${person.skin_color}</td>
