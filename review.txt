@@ -1,8 +1,34 @@
 
 
+x    Create a web-server. This should render an HTML file containing a table with all the Planets in the Star Wars universe with these data:
+x        name
+x        diameter (in km)
+x        climate
+x        terrain
+x        surface water (in percentage)
+x        population in formatted way
+x    Make a button in each row (in a new column) if the planet has residents. These buttons should open a modal, populated its data with AJAX,
+x    containing the list of residents with more detailed information:
+x        name
+x        height (in meters)
+x        mass (in kg)
+x        skin color
+x        hair color
+x        eye color
+x        birth year
+        gender (an icon representation)
+    Create a simple user login system with the following parts (use session for that):
+        a registration page accessible from the main page through which visitors can create a user-password pair in the database (you are advised to use salted password hashing),
+        a login page accessible from the main page where the user can log in,
+        display username and logout link in the header.
+
+Optional tasks
+
+    If the user is logged in, display a button in each row (in a new column) with which the logged in user can vote on a planet (they can vote to unlimited number of planets). Save this vote in a database with AJAX and inform a user somehow about the vote has been saved.
+    Create a new modal window accessible from the main page where you display the statistics about voted planets. Display a table with each voted planet and the number of vote the planet received. Use data from the database, receiving it with AJAX in JSON format.
+
 
 [ major ] Page shows a server error, anytime during the review.
-[ major ] After opening a residents modal, by opening another one, the page shows the content of the previous modal.
 [ minor ] The users DB table differ from the plan. (and the 4th exercise was considered implemented)
 [ minor ] The planet-votes DB table differ from the plan. (and the 4th exercise was considered implemented
 [ negligible ] 4th exercise is defined "done" but the user does not get a feedback when [s]he votes.
