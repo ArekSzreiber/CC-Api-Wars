@@ -2,15 +2,12 @@
 function makeTableRow(person){
     let row = document.createElement('tr');
     let genderIcon;
-    if(person.gender == 'male'){
-        genderIcon ='https://cdn.iconscout.com/icon/premium/png-256-thumb/male-gender-13-600271.png'
-    }else if(person.gender == 'female'){
-        genderIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-gender-19-559329.png'
-    }
-    if(genderIcon == null){
-        genderIcon = 'N/A'
+    if(person.gender === 'male'){
+        genderIcon = '<span class="genderIcon">&#9794;</span>';
+    }else if(person.gender === 'female'){
+        genderIcon = '<span class="genderIcon">&#9792;</span>';
     }else{
-        genderIcon = `<img src='${genderIcon}' height="40px" width="40px">`
+        genderIcon = 'N/A';
     }
     row.innerHTML = `
         <td>${person.name}</td>
