@@ -29,14 +29,9 @@ function makeTableRow(person){
 function makeTableBody(residentsURLs){
     $('#residentsTableBody').empty();
     for(let residentURL of residentsURLs){
-        let person = new XMLHttpRequest();
-        person.onreadystatechange = function(){
-            if(person.readyState === 4){
-                makeTableRow(JSON.parse(person.response))
-            }
-        };
-        person.open("GET", residentURL, true);
-        person.send();
+        $.get(residentURL, function(data){
+            makeTableRow(data);
+        });
     }
 }
 
