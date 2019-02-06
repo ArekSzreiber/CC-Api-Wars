@@ -1,6 +1,17 @@
 
 function makeTableRow(person){
     let row = document.createElement('tr');
+    let genderIcon;
+    if(person.gender == 'male'){
+        genderIcon ='https://cdn.iconscout.com/icon/premium/png-256-thumb/male-gender-13-600271.png'
+    }else if(person.gender == 'female'){
+        genderIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-gender-19-559329.png'
+    }
+    if(genderIcon == null){
+        genderIcon = 'N/A'
+    }else{
+        genderIcon = `<img src='${genderIcon}' height="40px" width="40px">`
+    }
     row.innerHTML = `
         <td>${person.name}</td>
         <td>${person.height/100}</td>
@@ -9,7 +20,7 @@ function makeTableRow(person){
         <td>${person.skin_color}</td>
         <td>${person.eye_color}</td>
         <td>${person.birth_year}</td>
-        <td>${person.gender}</td>
+        <td>${genderIcon}</td>
     `;
     $('#residentsTableBody').append(row);
 }
