@@ -28,11 +28,11 @@ function makeTableRow(person){
 
 function makeTableBody(residentsURLs){
     $('#residentsTableBody').empty();
-    for(let residentURL of residentsURLs){
+    residentsURLs.forEach(function(residentURL){
         $.get(residentURL, function(data){
             makeTableRow(data);
         });
-    }
+    });
 }
 
 
