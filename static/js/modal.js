@@ -33,26 +33,18 @@ function makeTableBody(residentsURLs){
 }
 
 
-let residentsModal = $('#residentsModal')
+let residentsModal = $('#residentsModal');
 residentsModal.on('show.bs.modal', function (event) {
     let button = $(event.relatedTarget); // Button that triggered the modal
-    let planetUrl = button.data('planetUrl'); // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    let planetUrl = button.data('planetUrl');
+
     let modal = $(this);
     modal.find('.modal-title').text('Residents of ' + button.data('planetName'));
     modal.find('.modal-body input').val(planetUrl);
 
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState === 4){
-            let planet = JSON.parse(xhr.response);
-            makeTableBody(planet['residents']);
-            $("#residentsTable").innerHTML = planet;
-        }
-    };
-    xhr.open("GET", planetUrl, true);
-    xhr.send();
+    $.get(planetUrl, function(data){
+        makeTableBody(data['residents']);
+    });
 });
 
 residentsModal.on('hidden.bs.modal', function(){
