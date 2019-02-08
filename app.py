@@ -1,21 +1,21 @@
-from flask import Flask, render_template, session, escape, request, url_for, redirect
+from flask import Flask, render_template, session, escape, request, url_for, make_response, redirect, jsonify
 from validation import validator as val
 from security import hashing as hashing
 from data import data_handler as data
 from data import api_connection as api
 from utility import utility as util
+from os import environ
 
 app = Flask(__name__)
-# secret key nigdy w kodzie tylko w env
-app.secret_key = b'\x12\x06\x97O\x8aaw\xadW\x18\xa7\x08%n\x7f\x1a_\xb6\xe03\xf3\xe4\x9f'
+
+app.secret_key = environ.get('SECRET_KEY')
 
 
 @app.route('/planets/page/<int:page>', methods=['GET'])
 @app.route('/planets/', methods=['GET'])
 def route_planets(page=1):  # show_planets v planets_view
     username = session.get('username', None)
-    error_message = session.get('error_message', None)
-    session.pop('error_message', None)
+    error_message = session.pop('error_message', None)
     planets = api.get_planets(page)
     util.format_big_numbers(planets['results'])
     next_page = api.get_page_nr(planets.get('next', None))
@@ -78,9 +78,11 @@ def route_registration():
     return redirect(url_for('route_index'))
 
 
-
+@app.route('/vote', methods=['POST'])
+def save_vote():
+    data.save_vote(1, "nwm", 2)
+    return make_response(jsonify(request.form))
 
 
 if __name__ == '__main__':
-    app.run(debug=True,
-            port=1234)
+    app.run(debug=True)

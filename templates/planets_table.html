@@ -1,3 +1,11 @@
+
+{% if username is not none %}
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/vote.js') }}"
+            defer>
+    </script>
+{% endif %}
+
 <div id="planetsWrapper">
     <h1>Star Wars universe planets</h1>
 
@@ -70,7 +78,10 @@
                 {% endif %}
             </td>
             <td>{% if username is not none %}
-                <button type="button" class="btn btn-outline-light active">Vote</button>
+                <button type="button"
+                        class="btn btn-outline-light active voteButton"
+                        data-planet-id="{{ result.url[-2:-1] }}"
+                        data-planet-name="{{ result.name }}">Vote</button>
                 {% endif %}
             </td>
         </tr>
