@@ -1,5 +1,6 @@
 from data import database_common as dc
 
+
 @dc.connection_handler
 def save_new_user(cursor, username, hashed_password):
     cursor.execute("""
@@ -24,8 +25,6 @@ def get_user_password(cursor, username):
         return False
     except IndexError:
         return False
-
-
 
 
 @dc.connection_handler

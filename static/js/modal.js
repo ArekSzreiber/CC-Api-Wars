@@ -1,12 +1,13 @@
 
-function makeTableRow(person){
-    let row = document.createElement('tr');
-    let genderIcon;
-    if(person.gender === 'male'){
+function makeTableRow(person) {
+    let row = document.createElement('tr'),
+        genderIcon;
+
+    if (person.gender === 'male') {
         genderIcon = '<span class="genderIcon">&#9794;</span>';
-    }else if(person.gender === 'female'){
+    } else if (person.gender === 'female') {
         genderIcon = '<span class="genderIcon">&#9792;</span>';
-    }else{
+    } else {
         genderIcon = 'N/A';
     }
     row.innerHTML = `
@@ -31,7 +32,7 @@ function makeTableBody(residentsURLs){
         });
     });
 }
-
+//todo zrobić głosowanie
 
 let residentsModal = $('#residentsModal');
 residentsModal.on('show.bs.modal', function (event) {
@@ -44,6 +45,8 @@ residentsModal.on('show.bs.modal', function (event) {
 
     $.get(planetUrl, function(data){
         makeTableBody(data['residents']);
+    }).fail(function(){
+        console.log('Failure');
     });
 });
 
