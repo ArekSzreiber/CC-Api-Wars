@@ -51,3 +51,16 @@ def save_vote(cursor, planet_id, planet_name, user_id):
         'planet_id': planet_id,
         'planet_name': planet_name,
     })
+
+
+@dc.connection_handler
+def get_user_id(cursor, username):
+    cursor.execute("""
+        SELECT id
+        FROM public.users
+        WHERE username = %(username)s;
+    """, {
+        'username': username
+    })
+    usernames = cursor.fetchall()
+    return usernames[0].get('id')
