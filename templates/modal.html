@@ -1,3 +1,4 @@
+
 {% block head %}
     <script type="text/javascript"
             src="{{ url_for('static', filename='js/modal.js') }}"
@@ -5,6 +6,7 @@
     </script>
 {% endblock %}
 
+{{ error_message }}
 <div class="modal"
      id="residentsModal"
      tabindex="-1"

@@ -80,7 +80,7 @@
             <td>{% if username is not none %}
                 <button type="button"
                         class="btn btn-outline-light active voteButton"
-                        data-planet-id="{{ result.url[-2:-1] }}"
+                        data-planet-id="{{ result.id }}"
                         data-planet-name="{{ result.name }}">Vote</button>
                 {% endif %}
             </td>

@@ -11,16 +11,13 @@ $(document).ready(function() {
             },
             type: 'POST',
             success: function (response) {
-                console.log('response');
-                console.log(response);
+                document.getElementById('errorModalLabel').textContent = response.header;
+                document.getElementById('errorModalBody').textContent = response.body;
+                $("#errorModal").modal('show');
             },
             error: function (error) {
-                console.log('error');
-                console.log(error);
+                //console.log(error);
             }
-        }).done(function (data){
-            console.log('data');
-            console.log(data);
         });
     });
 });

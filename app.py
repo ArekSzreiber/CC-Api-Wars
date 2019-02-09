@@ -18,6 +18,7 @@ def route_planets(page=1):  # show_planets v planets_view
     error_message = session.pop('error_message', None)
     planets = api.get_planets(page)
     util.format_big_numbers(planets['results'])
+    util.get_planet_id(planets['results'])
     next_page = api.get_page_nr(planets.get('next', None))
     previous_page = api.get_page_nr(planets.get('previous', None))
     return render_template('index.html',
@@ -83,11 +84,15 @@ def save_vote():
     planet_id = request.form.get('planet_id')
     planet_name = request.form.get('planet_name')
     user_id = data.get_user_id(session['username'])
+
     if (planet_id is not None) and \
        (planet_name is not None) and \
        (user_id is not None):
-        data.save_vote(planet_id, planet_name, user_id)
-    return make_response(jsonify(request.form))
+        if data.save_vote(planet_id, planet_name, user_id):
+            return make_response(jsonify({'header': 'Success',
+                                          'body': ('Voted on '+planet_name)}))
+    return make_response(jsonify({'header': 'Failure',
+                                  'body': 'Already voted'}))
 
 
 if __name__ == '__main__':

@@ -20,3 +20,9 @@ def format_big_number(number):
 def format_big_numbers(planets):
     for planet in planets:
         planet['population'] = format_big_number(planet.get('population'))
+
+
+def get_planet_id(planets):
+    for planet in planets:
+        planet['id'] = planet.get('url').replace('https://swapi.co/api/planets/', '')
+        planet['id'] = planet['id'].replace('/', '')

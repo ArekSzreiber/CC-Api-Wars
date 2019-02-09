@@ -54,8 +54,9 @@ def save_vote(cursor, planet_id, planet_name, user_id):
             'planet_name': planet_name,
             'user_id': user_id,
         })
+        return True
     except IntegrityError as e:
-        return "You already voted on this planet"
+        return False
 
 
 @dc.connection_handler
