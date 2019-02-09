@@ -83,8 +83,10 @@ def save_vote():
     planet_id = request.form.get('planet_id')
     planet_name = request.form.get('planet_name')
     user_id = data.get_user_id(session['username'])
-
-    data.save_vote(planet_id, planet_name, user_id)
+    if (planet_id is not None) and \
+       (planet_name is not None) and \
+       (user_id is not None):
+        data.save_vote(planet_id, planet_name, user_id)
     return make_response(jsonify(request.form))
 
 

@@ -3,8 +3,6 @@ $(document).ready(function() {
     let voteButtons = $(".voteButton");
     $(voteButtons).on('click', function(event) {
         let button = $(this);
-        console.log(button);
-        console.log(button.data('planetName'));
         $.ajax({
             url: '/vote',
             data: {
@@ -13,12 +11,15 @@ $(document).ready(function() {
             },
             type: 'POST',
             success: function (response) {
+                console.log('response');
                 console.log(response);
             },
             error: function (error) {
+                console.log('error');
                 console.log(error);
             }
         }).done(function (data){
+            console.log('data');
             console.log(data);
         });
     });

@@ -1,4 +1,5 @@
 from data import database_common as dc
+from psycopg2 import IntegrityError
 
 
 @dc.connection_handler
@@ -44,13 +45,17 @@ def check_user_existence(cursor, username):
 
 @dc.connection_handler
 def save_vote(cursor, planet_id, planet_name, user_id):
-    cursor.execute("""
-        INSERT INTO planet_votes (planet_id, planet_name, user_id)
-        VALUES (%(planet_id)s, %(planet_name)s, 2);
-    """, {
-        'planet_id': planet_id,
-        'planet_name': planet_name,
-    })
+    try:
+        cursor.execute("""
+            INSERT INTO planet_votes (planet_id, planet_name, user_id)
+            VALUES (%(planet_id)s, %(planet_name)s, %(user_id)s);
+        """, {
+            'planet_id': planet_id,
+            'planet_name': planet_name,
+            'user_id': user_id,
+        })
+    except IntegrityError as e:
+        return "You already voted on this planet"
 
 
 @dc.connection_handler
