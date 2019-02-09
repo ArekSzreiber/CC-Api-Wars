@@ -81,7 +81,9 @@ def route_registration():
 @app.route('/vote', methods=['POST'])
 def save_vote():
     print(request.form)
-    data.save_vote(1, "nwm", 2)
+    planet_id = request.form.get('planet_id')
+    planet_name = request.form.get('planet_name')
+    data.save_vote(planet_id, planet_name, 2)
     return make_response(jsonify(request.form))
 
 

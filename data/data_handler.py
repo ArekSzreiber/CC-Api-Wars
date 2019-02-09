@@ -46,5 +46,8 @@ def check_user_existence(cursor, username):
 def save_vote(cursor, planet_id, planet_name, user_id):
     cursor.execute("""
         INSERT INTO planet_votes (planet_id, planet_name, user_id)
-        VALUES (1, 'Cos', 2);
-    """)
+        VALUES (%(planet_id)s, %(planet_name)s, 2);
+    """, {
+        'planet_id': planet_id,
+        'planet_name': planet_name,
+    })
