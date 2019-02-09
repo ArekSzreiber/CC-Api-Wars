@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, escape, request, url_for, make_response, redirect, jsonify
+from flask import Flask, render_template, session, request, url_for, make_response, redirect, jsonify
 from validation import validator as val
 from security import hashing as hashing
 from data import data_handler as data
@@ -80,6 +80,7 @@ def route_registration():
 
 @app.route('/vote', methods=['POST'])
 def save_vote():
+    print(request.form)
     data.save_vote(1, "nwm", 2)
     return make_response(jsonify(request.form))
 

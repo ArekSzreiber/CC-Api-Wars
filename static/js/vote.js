@@ -2,12 +2,14 @@ $(document).ready(function() {
 
     let voteButtons = $(".voteButton");
     $(voteButtons).on('click', function(event) {
-        let button = $(event.relatedTarget);
+        let button = $(this);
         console.log(button);
+        console.log(button.data('planetName'));
         $.ajax({
             url: '/vote',
             data: {
-                planet_name: button.data('planetName')
+                planet_name: button.data('planetName'),
+                planet_id: button.data('planetId')
             },
             type: 'POST',
             success: function (response) {
@@ -17,7 +19,7 @@ $(document).ready(function() {
                 console.log(error);
             }
         }).done(function (data){
-            console.log('asdsa');
+            console.log(data);
         });
     });
 });
